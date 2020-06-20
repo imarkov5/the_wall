@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Message</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style/wall.css' %}">
+</head>
+<body>
+    <div id="wrapper">
+        <div class="header">
+            <h1>Coding Dojo Wall</h1>
+            <h1 class="right_header">{{user.first_name}} {{user.last_name}}</h1>
+            <a href="/wall" class="menu">Go back</a>
+        </div>
+        <div class="post_form">
+            <h2>Edit your profile</h2>
+            {% if messages %}
+                <ul class="messages">    
+                    {% for message in messages %}    
+                        <li>{{ message }}</li>    
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <form action="/wall/edit_profile" method="POST">
+                {% csrf_token %}
+                <label for="">First Name:</label>
+                <input type="text" name="first_name" value="{{user.first_name}}">
+                <label for="">Last Name:</label>
+                <input type="text" name="last_name" value="{{user.last_name}}">
+                <label for="">Email:</label>
+                <input type="text" name="email" value="{{user.email}}">
+                <button class="mess_comm">Save changes</button>
+            </form>
+            
+        </div>        
+    </div>
+</body>
+</html>

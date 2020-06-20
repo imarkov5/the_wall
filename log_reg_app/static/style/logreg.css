@@ -1,0 +1,34 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+#wrapper{
+    margin: 10px auto;
+    width: 1000px;
+}
+.column{
+    display: inline-block;
+    width: 250px;
+    vertical-align: top;
+    margin-right: 230px;
+    font-size: 20px;
+}
+input{
+    width: 250px;
+    padding: 7px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-size: 15px;
+}
+h1{
+    margin-bottom: 30px;
+}
+button{
+    padding: 7px;
+    border-radius: 5px;
+    font-size: 20px;
+    margin-top: 10px;
+}
+.messages{
+    color: red;
+}

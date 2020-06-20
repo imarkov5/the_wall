@@ -1,0 +1,77 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+#wrapper{
+    margin: 10px auto;
+    width: 1000px;
+    background-color: #ffdcc6;
+    padding: 20px;
+}
+.right_header{
+    margin-left: 320px;
+}
+h1{
+    display: inline-block;
+}
+.header{
+    background-color: #ff6000;
+    color: #ffede3;
+    padding: 10px 20px;
+}
+.menu{
+    color: #ffede3;
+    font-size: 16pt;
+    float: right;
+}
+h2{
+    color: #ff670c;
+}
+.messages{
+    margin: 5px 70px;
+}
+p{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+h3{
+    margin-top: 20px;
+}
+.post_form{
+    margin: 25px 50px;
+}
+.mess_post{
+    font-size: 16pt;
+}
+h4{
+    margin-top: 10px;
+}
+a{
+    text-decoration: none;
+    padding: 5px;
+    color: #ff6000;
+}
+button{
+    padding: 5px 10px;
+}
+.menu:hover{
+    background-color:  #ff5000;
+}
+.likes{
+    width: 40px;
+    border: #ff6000 solid 3px;
+    border-radius: 5px;
+    background-color: #ffedd2;
+    text-align: center;
+    color: #ff670c;
+    margin-bottom: 5px;
+}
+.mess_comm{
+    padding: 7px;
+    float: right;
+    background-color: #ff6000;
+    color: #ffede3;
+    border-radius: 10px;
+    box-shadow: 8px 8px 5px grey;
+    border: none;
+}

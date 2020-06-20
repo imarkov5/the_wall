@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wall</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style/wall.css' %}">
+</head>
+<body>
+    <div id="wrapper">
+        <div class="header">
+            <h1>Coding Dojo Wall</h1>
+            <h1 class="right_header">Welcome, {{request.session.name}}!</h1>
+            <a href="/wall/logout" class="menu">Log off</a>
+            <a href="/wall/edit_profile" class="menu">Profile</a>            
+        </div>
+        <div class="post_form">
+            <h2>Post a message</h2>
+            <form action="/wall/post_message" method="POST">
+                {%csrf_token%}
+                <textarea name="message" id="" cols="125" rows="4"></textarea><br>
+                <input type="submit" value="Post a message" class="mess_comm">
+            </form>
+        </div>
+        
+        <div class="messages">
+            {% for message in all_messages %}
+
+                <h3>{{message.poster.first_name}} {{message.poster.last_name}} - {{message.created_at}}</h3>
+                <p class="mess_post">{{message.message}}</p>
+                
+                {%if message.like.count > 0%}
+                    <div class="likes">{{message.like.count}}</div>
+                {%endif%}
+                
+                {% if logged_user in message.like.all %}
+                    <button><a href="/wall/unlike/{{message.id}}">Unlike</a></button>
+                {% elif logged_user not in message.like.all and logged_user.id != message.poster.id %}
+                    <button><a href="/wall/like/{{message.id}}">Like</a></button>
+                {% endif %}
+                
+                {% if request.session.id == message.poster.id %}
+                    <button><a href="/wall/delete/{{message.id}}">Delete message</a></button>
+                    <button><a href="/wall/edit/{{message.id}}">Edit message</a></button>
+                {% endif %}
+
+                {% if message.comments.count == 0 %}
+                <p>No comments</p>
+                {% endif %}
+
+                {% for comment in message.comments.all reversed%}
+                    <h4>{{comment.poster.first_name}} {{comment.poster.last_name}} - {{comment.created_at|date:"D d M Y"}}</h4>
+                    <p>{{comment.comment}}</p>
+                {% endfor %}
+                <h4>Post a comment</h4>
+                <form action="/wall/post_comment/{{message.id}}" method="POST">
+                    {%csrf_token%}
+                    <textarea name="comment" id="" cols="120" rows="3"></textarea><br>
+                    <input type="submit" value="Post a comment" class="mess_comm">
+                </form>
+
+            {% endfor %}
+        </div>
+        
+        
+        
+    </div>
+    
+</body>
+</html>

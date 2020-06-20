@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Message</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style/wall.css' %}">
+</head>
+<body>
+    <div id="wrapper">
+        <div class="header">
+            <h1>Coding Dojo Wall</h1>
+            <h1>{{message_to_edit.poster.first_name}} {{message_to_edit.poster.last_name}}</h1>
+        </div>
+        <div class="post_form">
+            <h2>Edit your message</h2>
+            <form action="/wall/edit/{{message_to_edit.id}}" method="POST">
+                {% csrf_token %}
+                <textarea name="edited_message" cols="125" rows="4">{{message_to_edit.message}}</textarea>
+                <input type="submit" value="Submit changes" class="mess_comm">
+            </form>
+        </div>        
+    </div>
+</body>
+</html>
