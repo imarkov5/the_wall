@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from log_reg_app.models import *
 
+
 def wall(request):
     if 'name' in request.session:
         context = {

@@ -3,6 +3,7 @@ import bcrypt
 from django.contrib import messages
 from .models import *
 
+
 def index(request):
     return render(request, 'index.html')
 
