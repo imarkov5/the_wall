@@ -9,5 +9,7 @@ urlpatterns = [
     path('edit/<int:mess_id>', views.edit_message),
     path('like/<int:mess_id>', views.like),
     path('edit_profile', views.edit_profile),
-    path('unlike/<int:mess_id>', views.unlike)
+    path('unlike/<int:mess_id>', views.unlike),
+    path('post_message_ajax', views.post_message_ajax),
+    path('post_comment_ajax', views.post_comment_ajax)
 ]

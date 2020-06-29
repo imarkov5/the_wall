@@ -9,7 +9,7 @@ def wall(request):
             'all_messages': Message.objects.order_by("-created_at"),
             'logged_user': User.objects.get(id=request.session['id'])
         }
-        return render(request, 'wall.html', context)
+        return render(request, 'wall_ajax.html', context)
     return redirect('../')
 
 def logout(request):
@@ -20,9 +20,24 @@ def post_message(request):
     Message.objects.create(message=request.POST['message'], poster=User.objects.get(id=request.session['id']))
     return redirect('/wall')
 
+def post_message_ajax(request):
+    message = Message.objects.create(message=request.POST['message'], poster=User.objects.get(id=request.session['id']))
+    context = {
+            'message': message,
+            'logged_user': User.objects.get(id=request.session['id'])
+    }
+    return render(request, 'message_snippet.html', context)
+
 def post_comment(request, mess_id):
     Comment.objects.create(comment=request.POST['comment'], poster=User.objects.get(id=request.session['id']), message=Message.objects.get(id=mess_id))
     return redirect('/wall')
+
+def post_comment_ajax(request):
+    comment = Comment.objects.create(comment=request.POST['comment'], poster=User.objects.get(id=request.session['id']), message=Message.objects.get(id=request.POST['mess_id']))
+    context = {
+        'comment': comment
+    }
+    return render(request, 'comment_snippet.html', context)
 
 def delete_message(request, mess_id):
     Message.objects.get(id=mess_id).delete()
