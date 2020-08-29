@@ -32,4 +32,19 @@ $(document).ready(function(){
             }
         });
     });
+    $("button").click(function(e){
+        e.preventDefault();
+        $.ajax({
+            url: "https://cat-fact.herokuapp.com/facts/random?animal_type=cat&amount=5",
+            method: "get",
+            success: function(response){
+                console.log(response);
+                var html = "";
+                for(var fact of response){
+                    html += `<p>${fact.text}</p>`;
+                }
+                $("#facts").html(html);
+            }
+        });
+    });
 });                     

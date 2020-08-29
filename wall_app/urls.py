@@ -11,5 +11,6 @@ urlpatterns = [
     path('edit_profile', views.edit_profile),
     path('unlike/<int:mess_id>', views.unlike),
     path('post_message_ajax', views.post_message_ajax),
-    path('post_comment_ajax', views.post_comment_ajax)
+    path('post_comment_ajax', views.post_comment_ajax),
+    path('cat_facts', views.cat_facts)
 ]

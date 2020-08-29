@@ -19,7 +19,7 @@
             <h2>Post a message</h2>
             <form id="post_form" action="/wall/post_message" method="POST">
                 {%csrf_token%}
-                <textarea name="message" id="" cols="125" rows="4" placeholder="What's going on?"></textarea><br>
+                <textarea name="message" id="" cols="119" rows="4" placeholder="What's going on?"></textarea><br>
                 <input type="submit" value="Post a message" class="mess_comm">
             </form>
         </div>
@@ -62,7 +62,7 @@
                 <form id="comment_form-{{message.id}}" action="/wall/post_comment/{{message.id}}" method="POST">
                     {%csrf_token%}
                     <input type="hidden" value="{{message.id}}" name="mess_id" id="">
-                    <textarea name="comment" id="" cols="120" rows="3"></textarea><br>
+                    <textarea name="comment" id="" cols="117" rows="3"></textarea><br>
                     <input type="submit" value="Post a comment" class="mess_comm">
                 </form>
 

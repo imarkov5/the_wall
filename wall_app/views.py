@@ -83,3 +83,6 @@ def edit_profile(request):
         user.save()
         return redirect('/wall')
     return render(request, 'edit_profile.html', context)
+
+def cat_facts(request):
+    return render(request, "cat_facts.html")
